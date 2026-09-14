@@ -1,1 +1,904 @@
-[FILE_TOO_LARGE]: The combined read_files output exceeded the 100,000 character hard limit. This file was truncated after 0 characters. Read it separately or use code_search for the relevant section.
+/* DO NOT CHANGE */
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+/* DO NOT CHANGE */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Notebook theme — warm paper tones */
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.98 0.005 85);
+  --foreground: oklch(0.22 0.02 50);
+  --card: oklch(0.99 0.003 85);
+  --card-foreground: oklch(0.22 0.02 50);
+  --popover: oklch(0.99 0.003 85);
+  --popover-foreground: oklch(0.22 0.02 50);
+  --primary: oklch(0.35 0.04 50);
+  --primary-foreground: oklch(0.99 0.003 85);
+  --secondary: oklch(0.95 0.008 85);
+  --secondary-foreground: oklch(0.30 0.03 50);
+  --muted: oklch(0.94 0.01 85);
+  --muted-foreground: oklch(0.50 0.02 50);
+  --accent: oklch(0.95 0.01 85);
+  --accent-foreground: oklch(0.30 0.03 50);
+  --destructive: oklch(0.55 0.18 25);
+  --border: oklch(0.88 0.015 70);
+  --input: oklch(0.88 0.015 70);
+  --ring: oklch(0.70 0.02 50);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not([disabled]),
+  [role="button"]:not([disabled]) {
+    cursor: pointer;
+  }
+}
+
+/* ============================================
+   NOTEBOOK THEME — Day Mark Custom Styles
+   ============================================ */
+
+/* Paper texture background */
+body {
+  background-image:
+    linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, 0.02) 25%, rgba(0, 0, 0, 0.02) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, 0.02) 75%, rgba(0, 0, 0, 0.02) 76%, transparent 77%),
+    linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, 0.02) 25%, rgba(0, 0, 0, 0.02) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, 0.02) 75%, rgba(0, 0, 0, 0.02) 76%, transparent 77%);
+  background-size: 50px 50px;
+}
+
+/* Notebook app container */
+.notebook-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+/* Header */
+.notebook-header {
+  background: var(--card);
+  border-bottom: 2px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.notebook-header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notebook-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.notebook-logo {
+  font-size: 1.75rem;
+}
+
+.notebook-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--foreground);
+}
+
+.notebook-settings-toggle {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  color: var(--muted-foreground);
+  transition: all 0.2s;
+  background: transparent;
+  border: none;
+}
+
+.notebook-settings-toggle:hover {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+/* Main content */
+.notebook-main {
+  flex: 1;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.notebook-section {
+  width: 100%;
+}
+
+/* Notebook page container (for calendar and panels) */
+.notebook-page,
+.notebook-today,
+.notebook-date-detail,
+.notebook-stats-panel,
+.notebook-history,
+.notebook-settings {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Ruled lines effect for notebook pages */
+.notebook-page {
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    rgba(0, 0, 0, 0.03) 31px,
+    rgba(0, 0, 0, 0.03) 32px
+  );
+  background-position: 0 32px;
+}
+
+/* Notebook heading font */
+.notebook-heading {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Section title */
+.notebook-section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Stats row (under calendar month) */
+.notebook-stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Courier New', monospace;
+}
+
+.stat-good { color: oklch(0.55 0.15 145); }
+.stat-wasted { color: oklch(0.55 0.15 30); }
+.stat-neutral { color: var(--muted-foreground); }
+.stat-divider { color: var(--border); }
+
+/* Navigation buttons */
+.notebook-nav-btn {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  color: var(--muted-foreground);
+  transition: all 0.2s;
+  background: transparent;
+  border: none;
+}
+
+.notebook-nav-btn:hover {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+/* Today button */
+.notebook-today-btn {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+  background: transparent;
+  border: none;
+}
+
+.notebook-today-btn:hover {
+  color: var(--foreground);
+}
+
+/* Day headers (Mon, Tue, ...) */
+.notebook-day-header {
+  padding: 0.5rem 0;
+  color: var(--muted-foreground);
+  font-size: 0.65rem;
+}
+
+/* Calendar day cell */
+.notebook-day-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: 0.375rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  transition: all 0.15s ease;
+  background: transparent;
+  border: none;
+  color: var(--foreground);
+}
+
+.notebook-day-cell:hover:not(:disabled) {
+  background: var(--muted);
+}
+
+/* Today highlight */
+.notebook-day-cell.is-today {
+  font-weight: 700;
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* Good day — filled highlight */
+.notebook-day-cell.is-good {
+  background: oklch(0.85 0.12 145);
+  color: oklch(0.25 0.1 145);
+  font-weight: 600;
+}
+
+.notebook-day-cell.is-good.is-today {
+  background: oklch(0.55 0.15 145);
+  color: white;
+}
+
+/* Wasted day — circle around the date */
+.notebook-day-cell.is-wasted {
+  background: transparent;
+}
+
+.notebook-day-cell.is-wasted .wasted-circle {
+  position: absolute;
+  inset: 2px;
+  border: 2.5px solid oklch(0.55 0.18 30);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Selected date */
+.notebook-day-cell.is-selected {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+/* ===== TODAY PANEL ===== */
+.notebook-today {
+  border-left: 4px solid var(--primary);
+}
+
+.notebook-today-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.notebook-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.notebook-date-display {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 1.1rem;
+  color: var(--foreground);
+}
+
+.notebook-today-prompt {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.notebook-question {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
+}
+
+.notebook-today-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Good day button */
+.notebook-btn-good {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid oklch(0.55 0.15 145);
+  border-radius: 0.375rem;
+  background: oklch(0.96 0.04 145);
+  color: oklch(0.35 0.12 145);
+  font-family: 'Georgia', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.notebook-btn-good:hover {
+  background: oklch(0.90 0.10 145);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.notebook-btn-good .check-icon {
+  font-size: 1.1rem;
+}
+
+/* Wasted day button */
+.notebook-btn-wasted {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid oklch(0.55 0.15 30);
+  border-radius: 0.375rem;
+  background: oklch(0.96 0.04 30);
+  color: oklch(0.45 0.15 30);
+  font-family: 'Georgia', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.notebook-btn-wasted:hover {
+  background: oklch(0.90 0.10 30);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.notebook-btn-wasted .cross-icon {
+  font-size: 1.1rem;
+}
+
+/* Status badge */
+.notebook-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+.notebook-status-badge.good {
+  background: oklch(0.92 0.08 145);
+  color: oklch(0.30 0.12 145);
+}
+
+.notebook-status-badge.wasted {
+  background: oklch(0.92 0.08 30);
+  color: oklch(0.40 0.15 30);
+}
+
+.notebook-status-note {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.notebook-today-status {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* ===== DATE DETAIL PANEL ===== */
+.notebook-date-detail {
+  border-left: 4px solid var(--border);
+}
+
+.notebook-date-detail-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.notebook-today-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: var(--muted);
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.notebook-detail-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.notebook-detail-btn {
+  padding: 0.5rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 0.375rem;
+  background: var(--card);
+  font-family: 'Georgia', serif;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.notebook-detail-btn:hover {
+  background: var(--muted);
+}
+
+.notebook-detail-btn.good.active {
+  background: oklch(0.90 0.10 145);
+  border-color: oklch(0.55 0.15 145);
+  color: oklch(0.30 0.12 145);
+}
+
+.notebook-detail-btn.wasted.active {
+  background: oklch(0.90 0.10 30);
+  border-color: oklch(0.55 0.15 30);
+  color: oklch(0.40 0.15 30);
+}
+
+.notebook-detail-btn.clear {
+  color: var(--muted-foreground);
+}
+
+.notebook-future-note {
+  font-style: italic;
+  color: var(--muted-foreground);
+  font-size: 0.85rem;
+}
+
+/* Note section */
+.notebook-note-section {
+  border-top: 1px dashed var(--border);
+  padding-top: 1rem;
+}
+
+.notebook-note-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-bottom: 0.5rem;
+}
+
+.notebook-note-optional {
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  font-style: italic;
+}
+
+.notebook-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1.5px solid var(--border);
+  border-radius: 0.375rem;
+  background: var(--background);
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.notebook-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.notebook-textarea::placeholder {
+  color: var(--muted-foreground);
+  font-style: italic;
+}
+
+.notebook-save-btn {
+  margin-top: 0.5rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  background: var(--card);
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+}
+
+.notebook-save-btn:hover {
+  background: var(--muted);
+}
+
+/* ===== STATS PANEL ===== */
+.notebook-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.notebook-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 1px dashed var(--border);
+  border-radius: 0.375rem;
+}
+
+.stat-number {
+  font-family: 'Courier New', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-number.good { color: oklch(0.50 0.15 145); }
+.stat-number.wasted { color: oklch(0.50 0.15 30); }
+.stat-number.neutral { color: var(--muted-foreground); }
+.stat-number.percent { color: var(--primary); }
+
+.stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-top: 0.375rem;
+}
+
+/* Streaks */
+.notebook-streaks {
+  display: flex;
+  gap: 1rem;
+}
+
+.notebook-streak-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  background: var(--background);
+}
+
+.streak-fire,
+.streak-trophy {
+  font-size: 2rem;
+}
+
+.streak-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.streak-number {
+  font-family: 'Courier New', monospace;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--foreground);
+}
+
+.streak-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.streak-unit {
+  font-size: 0.65rem;
+  color: var(--muted-foreground);
+  font-style: italic;
+}
+
+/* ===== HISTORY PANEL ===== */
+.notebook-history-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.notebook-history-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px dotted var(--border);
+  transition: background 0.15s;
+  background: transparent;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  width: 100%;
+  text-align: left;
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+}
+
+.notebook-history-item:last-child {
+  border-bottom: none;
+}
+
+.notebook-history-item:hover {
+  background: var(--muted);
+}
+
+.history-date {
+  min-width: 120px;
+  color: var(--foreground);
+}
+
+.history-status {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.history-good { color: oklch(0.50 0.15 145); }
+.history-wasted { color: oklch(0.50 0.15 30); }
+.history-unmarked { color: var(--muted-foreground); }
+
+.history-note {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  font-style: italic;
+  margin-left: auto;
+}
+
+/* ===== SETTINGS PANEL ===== */
+.notebook-settings-section {
+  margin-top: 0.5rem;
+}
+
+.notebook-settings-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-bottom: 0.75rem;
+}
+
+.notebook-settings-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.notebook-settings-btn {
+  padding: 0.5rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 0.375rem;
+  background: var(--card);
+  font-family: 'Georgia', serif;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.notebook-settings-btn:hover {
+  background: var(--muted);
+  border-color: var(--primary);
+}
+
+.notebook-settings-btn.danger {
+  color: oklch(0.50 0.15 30);
+}
+
+.notebook-settings-btn.danger:hover {
+  background: oklch(0.95 0.05 30);
+  border-color: oklch(0.55 0.15 30);
+}
+
+.notebook-settings-error {
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: oklch(0.95 0.05 30);
+  border: 1px solid oklch(0.85 0.1 30);
+  border-radius: 0.375rem;
+  font-size: 0.8rem;
+  color: oklch(0.40 0.15 30);
+}
+
+.notebook-settings-success {
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: oklch(0.95 0.05 145);
+  border: 1px solid oklch(0.85 0.1 145);
+  border-radius: 0.375rem;
+  font-size: 0.8rem;
+  color: oklch(0.35 0.12 145);
+}
+
+/* Confirm dialog overlay */
+.notebook-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.notebook-confirm-dialog {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  max-width: 360px;
+  width: 90%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.notebook-confirm-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.notebook-confirm-text {
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+  margin-bottom: 1.25rem;
+}
+
+.notebook-confirm-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.notebook-confirm-btn {
+  padding: 0.5rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 0.375rem;
+  font-family: 'Georgia', serif;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.notebook-confirm-btn.cancel {
+  background: var(--card);
+}
+
+.notebook-confirm-btn.cancel:hover {
+  background: var(--muted);
+}
+
+.notebook-confirm-btn.delete {
+  background: oklch(0.55 0.18 25);
+  color: white;
+  border-color: oklch(0.55 0.18 25);
+}
+
+.notebook-confirm-btn.delete:hover {
+  background: oklch(0.48 0.2 25);
+}
+
+/* Footer */
+.notebook-footer {
+  text-align: center;
+  padding: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .notebook-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .notebook-streaks {
+    flex-direction: column;
+  }
+
+  .notebook-today-actions {
+    flex-direction: column;
+  }
+
+  .notebook-history-item {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .history-note {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0.25rem;
+  }
+}
